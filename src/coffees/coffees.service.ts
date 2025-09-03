@@ -4,9 +4,9 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { DataSource, Repository } from "typeorm";
 import { CreateCoffeeDto } from "./dto/create-coffee.dto/create-coffee.dto";
 import { UpdateCoffeeDto } from "./dto/update-coffee.dto/update-coffee.dto";
-import { Event } from "src/events/entities/event.entity/event.entity";
+import { Event } from '../events/entities/event.entity';
 import { Flavor } from "./entities/flavor.entity/flavor.entity";
-import { PaginationQueryDto } from "src/common/dto/pagination-query.dto/pagination-query.dto";
+import { PaginationQueryDto } from "../common/dto/pagination-query.dto/pagination-query.dto";
 import * as config from "@nestjs/config";
 import coffeesConfig from "./config/coffees.config";
 
@@ -47,7 +47,7 @@ constructor(
       },
     });
     if(!coffee){
-        throw new NotFoundException('Coffee #${id} not found');
+        throw new NotFoundException('Coffee #' + id +' not found');
     }
     return coffee;
   }
